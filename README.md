@@ -107,7 +107,7 @@ Horizontal and vertical parking boundaries are detected using the Hough Transfor
 
 #### Merged Parking Lines
 
-![Merged Lines](Outputs/Easy3bP.png.png)
+![Merged Lines](Outputs/Easy3bP.png)
 
 ---
 
