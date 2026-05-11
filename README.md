@@ -4,13 +4,17 @@
 Classical Image Processing Based Parking Space Detection and Classification
 </p>
 
+<p align="center">
+<img src="Outputs/Easy1P.png" width="85%">
+</p>
+
 ---
 
-## Overview
+# Overview
 
 This project implements a classical image processing pipeline to detect parking spaces and classify them as occupied or empty using static parking lot images.
 
-The system was designed using traditional computer vision techniques instead of deep learning models in order to create a lightweight, interpretable, and computationally efficient solution.
+The system was designed using traditional computer vision and image processing techniques instead of deep learning models in order to create a lightweight, interpretable, and computationally efficient solution suitable for embedded and low-resource environments.
 
 The dataset is divided into three difficulty levels:
 
@@ -18,54 +22,63 @@ The dataset is divided into three difficulty levels:
 - Medium
 - Hard
 
-For simplicity, the processing pipeline below is demonstrated using the Easy dataset.
+For simplicity, the complete processing workflow is demonstrated below using the Easy dataset.
 
 ---
 
-## Why Classical Image Processing?
+# Why Classical Image Processing?
 
 There are two common approaches for parking spot detection:
 
-### Classical Image Processing
+## Classical Image Processing
+
 Uses manually designed operations such as:
 
+- Grayscale conversion
+- CLAHE contrast enhancement
+- Gaussian blurring
 - Edge detection
-- Thresholding
-- Morphological operations
 - Hough line detection
+- Morphological operations
 
-#### Advantages
+### Advantages
+
 - Lightweight and computationally efficient
 - Easy to understand and debug
 - No large training dataset required
 - Suitable for embedded systems
+- Transparent and explainable processing stages
 - Faster development for structured environments
 
-#### Limitations
-- Sensitive to lighting and shadows
+### Limitations
+
+- Sensitive to shadows and lighting changes
 - Reduced performance under perspective distortion
 - Requires manual parameter tuning
 - Less robust in highly complex scenes
 
 ---
 
-### Deep Learning Approaches
+## Deep Learning Approaches
+
 Uses trained neural networks such as CNNs and object detection models.
 
-#### Advantages
+### Advantages
+
 - More robust to visual complexity
 - Better handling of shadows and occlusions
 - Higher real-world accuracy
 
-#### Limitations
+### Limitations
+
 - Requires large labeled datasets
 - Higher computational cost
-- Requires training and GPU resources
+- Requires GPU resources and training time
 - Less interpretable compared to classical methods
 
 ---
 
-## Why This Approach Was Chosen
+# Why This Approach Was Chosen
 
 This project focuses on understanding and implementing the complete parking detection pipeline using traditional computer vision techniques.
 
@@ -81,73 +94,132 @@ The project demonstrates how far classical techniques can perform before advance
 
 ---
 
-## Processing Pipeline (Easy Set)
+# Easy Dataset Processing Pipelines
 
-### 1. Input Image
+Each figure below represents a complete processing pipeline visualization.
 
-![Input Image](Outputs/Easy1P.png)
-
----
-
-### 2. Edge Detection and Feature Extraction
-
-The image is converted to grayscale, smoothed using Gaussian blur, and processed using Sobel gradients and Canny edge detection.
-
-![Edge Detection](Outputs/Easy2P.png)
+Every pipeline image includes:
+- Original image or ROI
+- Grayscale conversion
+- CLAHE enhancement
+- Gaussian blurring
+- Edge extraction
+- Parking boundary analysis
 
 ---
 
-### 3. Parking Line Detection
+## Image 1 Processing Pipeline
 
-Horizontal and vertical parking boundaries are detected using the Hough Transform.
+This figure shows the complete parking detection pipeline applied to Easy Image 1.
 
-#### Vertical / Horizontal Line Detection
-
-![Line Detection](Outputs/Easy3aP.png)
-
-#### Merged Parking Lines
-
-![Merged Lines](Outputs/Easy3bP.png)
+![Easy Image 1](Outputs/Easy1P.png)
 
 ---
 
-### 4. Grid Formation and Parking Spot Localization
+## Image 2 Processing Pipeline
 
-Detected parking boundaries are merged to form parking slot grids.
+This figure shows the complete processing pipeline applied to Easy Image 2.
 
-#### Parking Grid Formation
-
-![Grid Formation](Outputs/Easy4aP.png)
-
-#### Parking Slot Segmentation
-
-![Spot Segmentation](Outputs/Easy4bP.png)
-
-#### Parking Spot Analysis
-
-![Spot Analysis](Outputs/Easy4cP.png)
+![Easy Image 2](Outputs/Easy2P.png)
 
 ---
 
-### 5. Final Parking Spot Classification
+## Image 3 - ROI A Processing Pipeline
 
-Green boxes indicate empty parking spots and red boxes indicate occupied parking spots.
+Image 3 was divided into multiple Regions of Interest (ROIs) to improve parking boundary extraction and occupancy analysis.
+
+This figure shows the complete processing pipeline applied to ROI A of Image 3.
+
+![Easy Image 3 ROI A](Outputs/Easy3aP.png)
+
+---
+
+## Image 3 - ROI B Processing Pipeline
+
+This figure shows the complete processing pipeline applied to ROI B of Image 3.
+
+![Easy Image 3 ROI B](Outputs/Easy3bP.png)
+
+---
+
+## Image 4 - ROI A Processing Pipeline
+
+This figure shows the complete processing pipeline applied to ROI A of Image 4.
+
+![Easy Image 4 ROI A](Outputs/Easy4aP.png)
+
+---
+
+## Image 4 - ROI B Processing Pipeline
+
+This figure shows the complete processing pipeline applied to ROI B of Image 4.
+
+![Easy Image 4 ROI B](Outputs/Easy4bP.png)
+
+---
+
+## Image 4 - ROI C Processing Pipeline
+
+This figure shows the complete processing pipeline applied to ROI C of Image 4.
+
+![Easy Image 4 ROI C](Outputs/Easy4cP.png)
+
+---
+
+# Final Parking Spot Classification
+
+The processed parking regions are combined to generate the final parking occupancy visualization.
+
+- Green boxes represent empty parking spots
+- Red boxes represent occupied parking spots
 
 ![Final Output](Outputs/EasyFinal.png)
 
 ---
 
-## Difficulty Levels
+# Results on Different Difficulty Levels
 
-| Difficulty Level | Description |
-|---|---|
-| Easy | Clear parking lines with minimal shadows and occlusions |
-| Medium | Includes faded markings, partial shadows, and moderate visual complexity |
-| Hard | Contains perspective distortion, clutter, uneven illumination, and complex layouts |
+## Easy Images
+
+Easy images contain:
+
+- Clear parking boundaries
+- Minimal shadows
+- Stable lighting conditions
+- Limited visual clutter
+
+The system achieved highly accurate parking slot detection and occupancy classification on these images.
 
 ---
 
-## Technologies Used
+## Medium Images
+
+Medium images include:
+
+- Partial shadows
+- Faded parking lines
+- Moderate occlusions
+- Uneven lighting
+
+These conditions occasionally introduced false detections and slight grid misalignments.
+
+---
+
+## Hard Images
+
+Hard images contain:
+
+- Strong perspective distortion
+- Heavy shadows
+- Visual clutter
+- Complex parking layouts
+- Weak parking boundaries
+
+These scenes required parameter tuning to achieve stable parking detection results.
+
+---
+
+# Technologies Used
 
 - Python
 - OpenCV
@@ -156,44 +228,52 @@ Green boxes indicate empty parking spots and red boxes indicate occupied parking
 
 ---
 
-## Key Image Processing Techniques
+# Key Image Processing Techniques
 
+- Grayscale Conversion
+- CLAHE Contrast Enhancement
+- Gaussian Blurring
 - Sobel Gradient Computation
 - Canny Edge Detection
 - Hough Line Transform
 - Morphological Opening
-- Erosion and Dilation
+- ROI-Based Processing
+- Parking Grid Formation
 - Intensity-Based Occupancy Classification
 
 ---
 
-## System Limitations and Failure Cases
+# System Limitations and Failure Cases
 
 Although the system performs well on simple parking scenes, several limitations were observed in medium and hard datasets.
 
-### Sensitivity to Lighting
+## Sensitivity to Lighting
 
 Strong shadows and uneven illumination reduce edge quality and affect occupancy classification accuracy.
 
-### Perspective Distortion
+## Perspective Distortion
 
 Angled camera views can distort parking slot geometry, making grid formation difficult.
 
-### Faded Parking Lines
+## Faded Parking Lines
 
 Weak or unclear parking boundaries reduce the reliability of Hough line detection.
 
-### Visual Clutter
+## Visual Clutter
 
 Objects such as poles, nearby vehicles, road markings, and pavement texture can introduce false detections.
 
-### Manual Parameter Tuning
+## Manual Parameter Tuning
 
 Hard images required adjustment of thresholds and merging parameters for stable results.
 
+## ROI Dependency
+
+Different parking regions may require slightly different processing settings because visual conditions vary across the image.
+
 ---
 
-## Results
+# Overall Results
 
 - Easy images produced highly accurate parking detection and classification
 - Medium images showed occasional misclassifications due to shadows and faded markings
@@ -203,7 +283,7 @@ The project demonstrates that classical image processing can still provide stron
 
 ---
 
-## Future Improvements
+# Future Improvements
 
 - Perspective correction using homography
 - Adaptive thresholding for changing lighting conditions
@@ -214,7 +294,7 @@ The project demonstrates that classical image processing can still provide stron
 
 ---
 
-## Conclusion
+# Conclusion
 
 This project successfully demonstrates a complete parking spot detection and classification pipeline using classical image processing techniques.
 
